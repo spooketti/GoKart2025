@@ -4,8 +4,8 @@ public interface TankIO {
 
     public static class TankData 
     {
-        public static double leftMotorSpeedRadPerSec = 0;
-        public static double rightMotorSpeedRadPerSec = 0;
+        public double leftMotorSpeedRadPerSec = 0;
+        public double rightMotorSpeedRadPerSec = 0;
     }
 
     public default void setLeftSpeed(double speed)
@@ -20,15 +20,15 @@ public interface TankIO {
 
     public default double getLeftSpeed()
     {
-        return TankData.leftMotorSpeedRadPerSec;
+        return 0;//TankData.leftMotorSpeedRadPerSec;
     }
 
     public default double getRightSpeed()
     {
-        return TankData.rightMotorSpeedRadPerSec;
+        return 0;//TankData.rightMotorSpeedRadPerSec;
     }
 
-    public default void updateData()
+    public default void updateData(TankData data)
     {
         
     }

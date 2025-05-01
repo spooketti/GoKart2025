@@ -3,10 +3,12 @@ package frc.robot.subsystems.tank;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
+import frc.robot.subsystems.tank.TankIO.TankData;
 
 public class Tank extends SubsystemBase
 {
     private TankIO tankIO;
+    private TankData tankData = new TankData();
 
     public Tank()
     {
@@ -46,7 +48,7 @@ public class Tank extends SubsystemBase
 
     public void updateData()
     {
-       tankIO.updateData();
+       tankIO.updateData(tankData);
     }
 
     @Override

@@ -14,6 +14,7 @@ public class TankDefaultCommand extends Command {
     {
         this.leftSupplier = leftSupplier;
         this.rightSupplier = rightSupplier;
+        addRequirements(Robot.tank);
     }
 
     @Override
