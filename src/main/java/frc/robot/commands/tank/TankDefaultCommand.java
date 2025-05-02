@@ -3,6 +3,7 @@ package frc.robot.commands.tank;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
 
 public class TankDefaultCommand extends Command {
@@ -17,10 +18,22 @@ public class TankDefaultCommand extends Command {
         addRequirements(Robot.tank);
     }
 
+    private static double deadband(double deadBand, double value)
+    {
+        if(deadBand>Math.abs(value))
+        {
+            return 0;
+        }
+        return value;
+    }
+
     @Override
     public void execute()
     {
-        Robot.tank.setLeftSpeed(leftSupplier.getAsDouble());
-        Robot.tank.setRightSpeed(rightSupplier.getAsDouble());
+        // System.out.println(leftSupplier.getAsDouble());
+        double clampedLeftSpeed = deadband(0.01, leftSupplier.getAsDouble());
+        double clampedRightSpeed = deadband(0.01, rightSupplier.getAsDouble());
+        Robot.tank.setLeftGoalSpeed(clampedLeftSpeed*Constants.TankConstants.maxVelocityMetersSecond);
+        Robot.tank.setRightGoalSpeed(clampedRightSpeed*Constants.TankConstants.maxVelocityMetersSecond);
     }
 }

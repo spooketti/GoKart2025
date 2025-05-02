@@ -16,4 +16,10 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+
+  public static class TankConstants
+  {
+    public static final double wheelRadiusMeters = 0.145;
+    public static final double maxVelocityMetersSecond = 10;
+  }
 }

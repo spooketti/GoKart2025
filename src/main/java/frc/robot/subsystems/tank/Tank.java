@@ -20,14 +20,14 @@ public class Tank extends SubsystemBase
         tankIO = new TankReal();
     }
 
-    public void setLeftSpeed(double leftSpeed)
+    public void setLeftGoalSpeed(double leftSpeed)
     {
-        tankIO.setLeftSpeed(leftSpeed);
+        tankIO.setLeftGoalSpeed(leftSpeed);
     }
 
-    public void setRightSpeed(double rightSpeed)
+    public void setRightGoalSpeed(double rightSpeed)
     {
-        tankIO.setRightSpeed(rightSpeed);
+        tankIO.setRightGoalSpeed(rightSpeed);
     }
 
     public double getLeftSpeed()
@@ -44,6 +44,8 @@ public class Tank extends SubsystemBase
     {
         SmartDashboard.putNumber("LeftMotorSpeed",getLeftSpeed());
         SmartDashboard.putNumber("RightMotorSpeed", getRightSpeed());
+        SmartDashboard.putNumber("LeftMotorVolts",tankData.leftMotorVolts);
+        SmartDashboard.putNumber("RightMotorVolts",tankData.rightMotorVolts);
     }
 
     public void updateData()
