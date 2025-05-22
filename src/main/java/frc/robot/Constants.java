@@ -20,6 +20,7 @@ public final class Constants {
   public static class TankConstants
   {
     public static final double wheelRadiusMeters = 0.145;
-    public static final double maxVelocityMetersSecond = 10;
+    public static final double maxAngularVelocityRadSec= 10;
+    public static final double distanceBetweenTracksMeter = 0.3;
   }
 }

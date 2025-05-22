@@ -2,9 +2,14 @@ package frc.robot.subsystems.tank;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
+import frc.robot.Constants;
 
 public class TankSim implements TankIO
 {
@@ -12,6 +17,8 @@ public class TankSim implements TankIO
     private FlywheelSim rightMotor = new FlywheelSim(LinearSystemId.createFlywheelSystem(DCMotor.getCIM(2), 0.326, 1),DCMotor.getCIM(2));
     private PIDController leftPID = new PIDController(2, 0, 0);
     private PIDController rightPID = new PIDController(2, 0, 0);
+    private DifferentialDriveKinematics tankKinematics = new DifferentialDriveKinematics(Constants.TankConstants.distanceBetweenTracksMeter);
+    private DifferentialDrivePoseEstimator tankPoseEstimator = new DifferentialDrivePoseEstimator(tankKinematics, new Rotation2d(0), 0, 0, new Pose2d(0,0,new Rotation2d(0)));
 
     public void setLeftGoalSpeed(double speedRadPS)
     {
@@ -49,11 +56,13 @@ public class TankSim implements TankIO
 
     public void updateData(TankData data)
     {
+
         leftMotor.update(0.02);
         rightMotor.update(0.02);
         data.leftMotorSpeedRadPerSec = leftMotor.getAngularVelocityRadPerSec();
         data.rightMotorSpeedRadPerSec = rightMotor.getAngularVelocityRadPerSec();
         data.leftMotorVolts = leftMotor.getInputVoltage();
         data.leftMotorVolts = rightMotor.getInputVoltage();
+        tankPoseEstimator.update(new Rotation2d(0), 0,0);
     }
 }

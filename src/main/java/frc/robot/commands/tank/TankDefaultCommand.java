@@ -20,6 +20,7 @@ public class TankDefaultCommand extends Command {
 
     private static double deadband(double deadBand, double value)
     {
+        System.out.println(value);
         if(deadBand>Math.abs(value))
         {
             return 0;
@@ -31,9 +32,9 @@ public class TankDefaultCommand extends Command {
     public void execute()
     {
         // System.out.println(leftSupplier.getAsDouble());
-        double clampedLeftSpeed = deadband(0.01, leftSupplier.getAsDouble());
-        double clampedRightSpeed = deadband(0.01, rightSupplier.getAsDouble());
-        Robot.tank.setLeftGoalSpeed(clampedLeftSpeed*Constants.TankConstants.maxVelocityMetersSecond);
-        Robot.tank.setRightGoalSpeed(clampedRightSpeed*Constants.TankConstants.maxVelocityMetersSecond);
+        double clampedLeftSpeed = deadband(0.1, leftSupplier.getAsDouble());
+        double clampedRightSpeed = deadband(0.1, rightSupplier.getAsDouble());
+        Robot.tank.setLeftGoalSpeed(clampedLeftSpeed*Constants.TankConstants.maxAngularVelocityRadSec);
+        Robot.tank.setRightGoalSpeed(clampedRightSpeed*Constants.TankConstants.maxAngularVelocityRadSec);
     }
 }
