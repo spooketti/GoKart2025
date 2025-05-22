@@ -20,7 +20,7 @@ public class TankDefaultCommand extends Command {
 
     private static double deadband(double deadBand, double value)
     {
-        System.out.println(value);
+        // System.out.println(value);
         if(deadBand>Math.abs(value))
         {
             return 0;
