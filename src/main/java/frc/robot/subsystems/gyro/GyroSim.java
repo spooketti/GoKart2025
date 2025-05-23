@@ -10,6 +10,6 @@ public class GyroSim implements GyroIO {
     public void updateData(GyroData data) {
         Rotation2d deltaTheta = Rotation2d.fromRadians(Robot.tank.getAngularVelocityRadPerSec() * Constants.SimConstants.simPeriodicLoop);
         
-        data.angleRad = Math.toRadians((data.angleRad + deltaTheta.getDegrees() + 360) % 360);
+        data.angleDeg = (data.angleDeg + deltaTheta.getDegrees() + 360) % 360;
     }
 }

@@ -20,9 +20,9 @@ public class Gyro extends SubsystemBase
         gyroIO = new GyroSim();
     }
 
-    public double getAngleRad()
+    public double getAngleDeg()
     {
-        return gyroData.angleRad;
+        return gyroData.angleDeg;
     }
 
     @Override

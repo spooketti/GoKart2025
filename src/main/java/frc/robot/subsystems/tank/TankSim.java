@@ -10,6 +10,7 @@ import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.simulation.FlywheelSim;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -89,7 +90,7 @@ public class TankSim implements TankIO
         data.angularVelocityRadSec = chassisSpeeds.omegaRadiansPerSecond;
         data.linearVelocityXMeterSec = chassisSpeeds.vxMetersPerSecond;
         data.linearVelocityYMeterSec = chassisSpeeds.vyMetersPerSecond;
-        tankPoseEstimator.update(new Rotation2d(Robot.gyro.getAngleRad()), leftDisplacementMeters,rightDisplacementMeters);
+        tankPoseEstimator.update(new Rotation2d(Units.degreesToRadians(Robot.gyro.getAngleDeg())), leftDisplacementMeters,rightDisplacementMeters);
     }
 
     public ChassisSpeeds getChassisSpeeds()
