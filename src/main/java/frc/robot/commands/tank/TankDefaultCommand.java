@@ -32,8 +32,8 @@ public class TankDefaultCommand extends Command {
     public void execute()
     {
         // System.out.println(leftSupplier.getAsDouble());
-        double clampedLeftSpeed = deadband(0.1, leftSupplier.getAsDouble());
-        double clampedRightSpeed = deadband(0.1, rightSupplier.getAsDouble());
+        double clampedLeftSpeed = -deadband(0.1, leftSupplier.getAsDouble());
+        double clampedRightSpeed = -deadband(0.1, rightSupplier.getAsDouble());
         Robot.tank.setLeftGoalSpeed(clampedLeftSpeed*Constants.TankConstants.maxAngularVelocityRadSec);
         Robot.tank.setRightGoalSpeed(clampedRightSpeed*Constants.TankConstants.maxAngularVelocityRadSec);
     }

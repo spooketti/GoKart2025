@@ -7,6 +7,8 @@ public interface TankIO {
 
     public static class TankData 
     {
+        public double leftEncoderPositionRad = 0;
+        public double rightEncoderPositionRad = 0;
         public double leftMotorSpeedRadPerSec = 0;
         public double rightMotorSpeedRadPerSec = 0;
         public double leftMotorVolts = 0;
@@ -41,6 +43,16 @@ public interface TankIO {
     public default double getLeftSpeed()
     {
         return 0;//TankData.leftMotorSpeedRadPerSec;
+    }
+
+    public default double getLeftEncoderPosition()
+    {
+        return 0;
+    }
+
+    public default double getRightEncoderPosition()
+    {
+        return 0;
     }
 
     public default double getRightSpeed()

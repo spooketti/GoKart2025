@@ -37,6 +37,16 @@ public class Tank extends SubsystemBase
         return tankIO.getLeftSpeed();
     }
 
+    public void setLeftVoltage(double volts)
+    {
+        tankIO.setLeftVoltage(volts);
+    }
+
+    public void setRightVoltage(double volts)
+    {
+        tankIO.setRightVoltage(volts);
+    }
+
     public double getRightSpeed()
     {
         return tankIO.getRightSpeed();
@@ -51,6 +61,10 @@ public class Tank extends SubsystemBase
     {
         SmartDashboard.putNumber("LeftMotorSpeed",getLeftSpeed());
         SmartDashboard.putNumber("RightMotorSpeed", getRightSpeed());
+
+        SmartDashboard.putNumber("LeftEncoderPositionRad",tankData.leftEncoderPositionRad);
+        SmartDashboard.putNumber("RightEncoderPositionRad", tankData.rightEncoderPositionRad);
+
         SmartDashboard.putNumber("LeftMotorVolts",tankData.leftMotorVolts);
         SmartDashboard.putNumber("RightMotorVolts",tankData.rightMotorVolts);
         SmartDashboard.putData("fuk",field);

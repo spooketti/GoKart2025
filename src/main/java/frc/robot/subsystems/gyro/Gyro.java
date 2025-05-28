@@ -25,6 +25,11 @@ public class Gyro extends SubsystemBase
         return gyroData.angleDeg;
     }
 
+    public void setGyroAngleRad(double rad)
+    {
+        gyroData.angleRad = rad;
+    }
+
     @Override
     public void periodic()
     {

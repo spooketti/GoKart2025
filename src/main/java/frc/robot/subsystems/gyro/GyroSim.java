@@ -8,8 +8,8 @@ public class GyroSim implements GyroIO {
 
     @Override
     public void updateData(GyroData data) {
-        Rotation2d deltaTheta = Rotation2d.fromRadians(Robot.tank.getAngularVelocityRadPerSec() * Constants.SimConstants.simPeriodicLoop);
+        // Rotation2d deltaTheta = Rotation2d.fromRadians(Robot.tank.getAngularVelocityRadPerSec() * Constants.SimConstants.simPeriodicLoop);
         
-        data.angleDeg = (data.angleDeg + deltaTheta.getDegrees() + 360) % 360;
+        // data.angleDeg = (data.angleDeg + deltaTheta.getDegrees() + 360) % 360;
     }
 }
